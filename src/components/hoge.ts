@@ -1,1 +1,1 @@
-export default hoge = () => 23;
+export default () => 23;
