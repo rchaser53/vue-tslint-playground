@@ -1,0 +1,36 @@
+{
+  "name": "vue-tslint-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rchaser53/vue-tslint-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rchaser53/vue-tslint-playground/issues"
+  },
+  "homepage": "https://github.com/rchaser53/vue-tslint-playground#readme",
+  "dependencies": {
+    "axios": "~0.17.1",
+    "vue": "^2.5.13",
+    "vue-class-component": "~6.1.0"
+  },
+	"devDependencies": {
+    "@types/node": "~8.0.53",
+    "ts-loader": "^3.2.0",
+    "tslint": "^5.9.1",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.6.2",
+    "vue-template-compiler": "^2.5.13",
+    "vue-loader": "^13.7.0",
+    "webpack": "^3.10.0",
+		"webpack-dev-server": "^2.9.7"
+  }
+}
