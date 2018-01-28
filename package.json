@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "eslint": "eslint",
     "start": "webpack-dev-server",
     "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,html,vue}\""
@@ -15,6 +16,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "*.vue": ["eslint --fix", "git add"],
+    "*.ts": ["eslint --fix", "git add"]
+  },
   "bugs": {
     "url": "https://github.com/rchaser53/vue-tslint-playground/issues"
   },
@@ -36,6 +41,8 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.2.0",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.10.2",
     "ts-loader": "^3.2.0",
     "tslint": "^5.9.1",
