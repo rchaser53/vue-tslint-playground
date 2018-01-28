@@ -5,12 +5,14 @@
 </template>
 
 <script lang="ts">
-import Component from 'vue-class-component'
+/* eslint-disable */
 import Vue from 'vue'
 
-@Component({
-	components: {},
-	methods: {}
-})
-export default class ComponentA extends Vue {}
+export default class hoge extends Vue {
+    hoge() {
+        [1,2,3].reduce<string[]>((stack, next) => {
+            return stack.concat(next.toString())
+        }, [])
+    }
+}
 </script>

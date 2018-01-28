@@ -1,9 +1,11 @@
 {
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:vue/recommended"
     ],
     "plugins": [
-        "import"
+        "import",
+        "vue"
     ],
     "parserOptions": {
         "parser": "babel-eslint",
