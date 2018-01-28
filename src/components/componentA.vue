@@ -9,11 +9,10 @@
 import Vue from 'vue'
 
 export default class hoge extends Vue {
-    hoge() {
-        // [1,2,3].reduce<string[]>((stack, next) => {
-        //     return stack.concat(next.toString())
-        // }, [])
-    }
+	hoge() {
+		// [1,2,3].reduce<string[]>((stack, next) => {
+		//     return stack.concat(next.toString())
+		// }, [])
+	}
 }
 </script>
-
