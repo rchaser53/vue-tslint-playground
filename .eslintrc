@@ -1,0 +1,82 @@
+{
+    "extends": [
+        "airbnb-base"
+    ],
+    "plugins": [
+        "import"
+    ],
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "globals": {
+        "window": true,
+        "document": true,
+        "CustomEvent": true,
+        "DOMParser": true
+    },
+    "rules": {
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 126
+            }
+        ],
+        "eqeqeq": "error",
+        "no-var": "error",
+        "one-var": [
+            "error",
+            "never"
+        ],
+        "prefer-const": "error",
+        "no-sequences": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireReturn": false
+            }
+        ],
+        "func-names": [
+            "error",
+            "as-needed"
+        ],
+        "no-confusing-arrow": "off",
+        "no-spaced-func": "error",
+        "no-constant-condition": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "no-unused-expressions": "error",
+        "class-methods-use-this": [
+            "error",
+            {
+                "exceptMethods": [
+                    "errorDetail"
+                ]
+            }
+        ],
+        "prefer-destructuring": "off"
+    }
+}
