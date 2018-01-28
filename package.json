@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,vue}\""
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,16 @@
     "vue": "^2.5.13",
     "vue-class-component": "~6.1.0"
   },
-	"devDependencies": {
+  "devDependencies": {
     "@types/node": "~8.0.53",
+    "prettier": "^1.10.2",
     "ts-loader": "^3.2.0",
     "tslint": "^5.9.1",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.6.2",
-    "vue-template-compiler": "^2.5.13",
     "vue-loader": "^13.7.0",
+    "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
-		"webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.9.7"
   }
 }

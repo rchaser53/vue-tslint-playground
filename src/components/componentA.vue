@@ -5,14 +5,12 @@
 </template>
 
 <script lang="ts">
-  import Component from 'vue-class-component'
-  import Vue from 'vue'
-  
-  @Component({
-    components: {
-    },
-    methods: {
-    }
-  })
-  export default class ComponentA extends Vue {}
+import Component from 'vue-class-component'
+import Vue from 'vue'
+
+@Component({
+	components: {},
+	methods: {}
+})
+export default class ComponentA extends Vue {}
 </script>
