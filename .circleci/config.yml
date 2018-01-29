@@ -5,6 +5,8 @@ jobs:
       - image: circleci/node:6.10.3
 
     steps:
+      - checkout
+
       - restore_cache:
           keys:
           - dependencies-v1-
@@ -18,8 +20,4 @@ jobs:
         
       - run: 
           name: deploy
-          command: ls
-
-      - run: 
-          name: deploy
-          command: pwd
+          command: ls && make deploy
