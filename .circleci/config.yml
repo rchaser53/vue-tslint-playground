@@ -17,5 +17,5 @@ jobs:
           key: dependencies-v1-
         
       - run: 
-          name: test
-          command: echo $S3TEST
+          name: deploy
+          command: make deploy
