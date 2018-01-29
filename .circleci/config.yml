@@ -18,4 +18,8 @@ jobs:
         
       - run: 
           name: deploy
-          command: make
+          command: ls
+
+      - run: 
+          name: deploy
+          command: pwd

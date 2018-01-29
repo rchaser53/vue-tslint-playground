@@ -13,4 +13,4 @@ zip: clean
 	rm -rf ./build/fake.pdf
 
 deploy: zip
-	echo 23
+	node tasks/s3.js
