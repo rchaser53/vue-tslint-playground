@@ -1,6 +1,6 @@
-.PHONY: zip clean deploy
+.PHONY: zip clean
 
-default: zip
+default: deploy
 
 clean:
 	rm -rf build
@@ -13,4 +13,4 @@ zip: clean
 	rm -rf ./build/fake.pdf
 
 deploy: zip
-	node tasks/s3.js
+	echo 23

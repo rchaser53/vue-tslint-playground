@@ -3,7 +3,7 @@ const AWS = require('aws-sdk')
 
 const s3 = new AWS.S3()
 const params = {
-  Bucket: 'rchaser-test-build',
+  Bucket: 'rchaser53-test-build',
   Key: 'test-build.zip',
   Body: fs.readFileSync("./build/fake.zip")
 }
