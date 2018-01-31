@@ -15,7 +15,7 @@ jobs:
 
       - save_cache:
           paths:
-            - node_modules
+            - node_modules/*
           key: dependencies-v1-
         
       - run: 
