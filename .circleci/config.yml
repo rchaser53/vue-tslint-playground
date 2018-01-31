@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/workspace
     docker:
       - image: circleci/node:6.10.3
 
@@ -9,14 +10,15 @@ jobs:
 
       - restore_cache:
           keys:
-          - dependencies-v1-
+          - node_modules-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - run: yarn install
 
       - save_cache:
+          key: node_modules-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules/*
-          key: dependencies-v1-
+            - ~/workspace/node_modules
+            - ~/.cache/yarn/
         
       - run: 
           name: deploy
