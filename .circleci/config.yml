@@ -5,8 +5,12 @@ jobs:
     docker:
       - image: circleci/node:6.10.3
 
+
     steps:
       - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true 
 
       - restore_cache:
           keys:
@@ -21,8 +25,8 @@ jobs:
             - ~/.cache/yarn/
       
       - run:
-        name: docker
-        command: docker pull redis:4.0.1-alpine
+          name: docker
+          command: docker pull redis:4.0.1-alpine
 
       - run: 
           name: deploy
