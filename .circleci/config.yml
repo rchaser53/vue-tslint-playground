@@ -19,7 +19,11 @@ jobs:
           paths:
             - ~/workspace/node_modules
             - ~/.cache/yarn/
-        
+      
+      - run:
+        name: docker
+        command: docker pull redis:4.0.1-alpine
+
       - run: 
           name: deploy
           command: ls && make deploy
