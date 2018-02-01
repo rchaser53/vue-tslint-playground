@@ -1,25 +1,15 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
-    "removeComments": false,
-    "noLib": false,
-    "target": "es2015",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "module": "commonjs",
-    "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noEmit": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "es2015",
-      "es2016",
-      "dom",
-      "es2017.object"
-    ]
+		"target": "es5",
+		"lib": ["dom", "es2015"],
+		"module": "es2015",
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"strict": true,
+		"noImplicitAny": false,
+		"noImplicitThis": true,
+		"suppressImplicitAnyIndexErrors": true,
+		"removeComments": true
   },
   "compileOnSave": false,
   "exclude": [

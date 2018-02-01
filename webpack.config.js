@@ -14,41 +14,28 @@ module.exports = {
 	},
 	module: {
 		rules: [
-            {
-                enforce: 'pre',
-                test: /\.ts$/,
-                loader: 'tslint-loader',
-                exclude: /(node_modules)/,
-                options: {
-                    configFile: 'tslint.json'
-                }
-            },
-            {
-                test: /\.ts$/,
-                exclude: /node_modules|vue\/src/,
-                loader: 'ts-loader',
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                    transpileOnly: true,
-                    // isolatedModules: true
-                }
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        ts: 'ts-loader!tslint-loader'
-                    }
-                }
-            }
+			{
+				test: /\.ts$/,
+				exclude: /node_modules|vue\/src/,
+				loader: 'ts-loader',
+				options: {
+					appendTsSuffixTo: [/\.vue$/]
+				}
+			},
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+				options: {
+					esModule: true
+				}
+			}
 		]
 	},
 	devServer: {
 		historyApiFallback: {
 			rewrites: [{ from: /vee\$/, to: '/vee' }, { from: /element\$/, to: '/element' }]
 		},
-		open: true,
+		// open: true,
 		port: 3000,
 		// openPage: 'element',
 		host: "localhost",

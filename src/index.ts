@@ -1,8 +1,10 @@
-import Vue from 'vue';
-import ComponentA from './components/componentA'
+import Vue from 'vue'
+// import ComponentA from './components/componentA.vue'
+
+import ComponentA from './components/av-ts-component.vue'
 
 new Vue({
-    el: '#app',
-    components: { ComponentA },
-    template: '<component-a/>'
-});
+	el: '#app',
+	components: { ComponentA },
+	template: '<component-a my-prop="{a:1, b:3}"/>'
+})
