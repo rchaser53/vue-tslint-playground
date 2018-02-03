@@ -1,16 +1,20 @@
 version: 2
 jobs:
   build:
+    machine: true
     working_directory: ~/workspace
-    docker:
-      - image: circleci/node:6.10.3
-
 
     steps:
       - checkout
 
       - setup_remote_docker:
-          docker_layer_caching: true 
+          docker_layer_caching: true
+
+      - run: docker-compose up -d
+
+      - run: docker exec -it node bash
+
+      - run: npm i yarn -g
 
       - restore_cache:
           keys:
@@ -18,16 +22,12 @@ jobs:
 
       - run: yarn install
 
+      - run: exit
+
       - save_cache:
           key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ~/workspace/node_modules
             - ~/.cache/yarn/
-      
-      - run:
-          name: docker
-          command: docker pull redis:4.0.1-alpine
 
-      - run: 
-          name: deploy
-          command: ls && make deploy
+      - run: make deploy

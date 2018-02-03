@@ -6,7 +6,7 @@ services:
     tty: true
     working_dir: /home/app/
     volumes:
-      - ${HOME}/node_modules/:/home/app/node_modules/
+      - ${HOME}/:/home/app/
     # ports:
     #  - "5000:5000"
     # depends_on:
