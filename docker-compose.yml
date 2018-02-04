@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     container_name: node
-    image: rchaser53/node-8.9.4
+    image: node
     tty: true
     working_dir: /home/app/
     volumes:
