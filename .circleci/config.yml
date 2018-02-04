@@ -21,6 +21,7 @@ jobs:
       - run: docker-compose up -d
       - run: docker-compose exec web bash -c "npm i yarn -g"
       - run: docker-compose exec web bash -c "yarn install"
+      - run: docker-compose exec web bash -c "npm run build"
       - run:
           command: |
             if [ ! -f ~/caches/images.tar ]; then
