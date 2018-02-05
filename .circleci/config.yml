@@ -23,7 +23,6 @@ jobs:
           key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
 
-
       - run:
           command: |
             set +o pipefail

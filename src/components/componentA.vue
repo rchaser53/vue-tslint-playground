@@ -9,16 +9,19 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-const SomethingMixin = {
+const MixinA = {
 	nyan(): void {
 		console.log('nyan')
-	},
-	chu<T>(a: T): T {
-		return a
 	}
 }
 
-export default ((mixin) => {
+const MixinB = {
+	chu(a: number): string {
+		return a.toString()
+	}
+}
+
+export default (({ MixinA, MixinB }) => {
 	@Component({
 		props: {
 			propMessage: String
@@ -26,12 +29,12 @@ export default ((mixin) => {
 	})
 	class Hoge extends Vue {
 		hoge() {
-			mixin.nyan()
+			MixinA.nyan()
 			// [1,2,3].reduce<string[]>((stack, next) => {
 			//     return stack.concat(next.toString())
 			// }, [])
 		}
 	}
 	return Hoge
-})(SomethingMixin)
+})({ MixinA, MixinB })
 </script>
