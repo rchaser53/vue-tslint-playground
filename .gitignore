@@ -1,2 +1,7 @@
 node_modules
 build
+.config
+.npm
+.node_repl_history
+.gitignore
+dist

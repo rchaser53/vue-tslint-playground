@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web:
+    container_name: node
+    image: rchaser53/node-8.9.4
+    tty: true
+    working_dir: /home/app/
+    volumes:
+      - ${HOME}/workspace/:/home/app/
+    # ports:
+    #  - "5000:5000"
+    # depends_on:
+    #   - redis
+    # networks:
+    #   - back-tier
+    # environment:
+
+# redis:
+#   container_name: redis
+#   image: redis
+#   networks:
+#     - back-tier
+
+# networks:
+#   back-tier:
+#     driver: bridge

@@ -1,33 +1,41 @@
 version: 2
 jobs:
   build:
+    machine: true
     working_directory: ~/workspace
-    docker:
-      - image: circleci/node:6.10.3
-
 
     steps:
       - checkout
 
-      - setup_remote_docker:
-          docker_layer_caching: true 
-
       - restore_cache:
           keys:
           - node_modules-{{ .Branch }}-{{ checksum "package.json" }}
+      - restore_cache:
+          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          paths: ~/caches/images.tar
 
-      - run: yarn install
+      - run:
+          command: |
+            set +o pipefail
+            docker load -i ~/caches/images.tar | true
+      - run: docker-compose up -d
+      - run: docker-compose exec web bash -c "npm i yarn -g"
+      - run: docker-compose exec web bash -c "yarn install"
+      - run: docker-compose exec web bash -c "npm run build"
+      - run:
+          command: |
+            if [ ! -f ~/caches/images.tar ]; then
+              mkdir -p ~/caches
+              docker save $(docker images -q) -o ~/caches/images.tar
+            fi
 
+      - save_cache:
+          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+          paths: ~/caches/images.tar
       - save_cache:
           key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - ~/workspace/node_modules
             - ~/.cache/yarn/
-      
-      - run:
-          name: docker
-          command: docker pull redis:4.0.1-alpine
 
-      - run: 
-          name: deploy
-          command: ls && make deploy
+      - run: make deploy
