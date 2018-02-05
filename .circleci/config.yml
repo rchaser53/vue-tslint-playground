@@ -18,10 +18,15 @@ jobs:
           key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
 
-      - run: git clone https://github.com/rchaser53/vue-tslint-playground.git ; cd vue-tslint-playground
-      - run: source exportCacheKey.sh
-      - run: echo $kiro
-      - run: cd ..
+      - run:
+          command: |
+            git clone https://github.com/rchaser53/rust_playground.git ; cd rust_playground
+
+      - save_cache:
+          key: node_modules-{{ checksum "Makefile" }}
+          paths:
+            - ~/workspace/node_modules
+            - ~/.cache/yarn/
 
       - run:
           command: |
@@ -46,11 +51,5 @@ jobs:
       #     paths:
       #       - ~/workspace/node_modules
       #       - ~/.cache/yarn/
-
-      - save_cache:
-          key: node_modules-{{ .Environment.kiro }}
-          paths:
-            - ~/workspace/node_modules
-            - ~/.cache/yarn/
 
       - run: make deploy
