@@ -7,10 +7,15 @@ jobs:
     steps:
       - checkout
 
-      # - restore_cache:
-      #     key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
+      - run:
+          command: |
+            git clone https://github.com/rchaser53/rust_playground.git
+            cd rust_playground
+            git rev-parse HEAD > ../rust_cache
+            cd ..
+
       - restore_cache:
-          key: node_modules-{{ .Environment.kiro }}
+          key: node_modules-{{ checksum "rust_cache" }}
           paths:
             - ~/workspace/node_modules
             - ~/.cache/yarn/
@@ -18,15 +23,6 @@ jobs:
           key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
 
-      - run:
-          command: |
-            git clone https://github.com/rchaser53/rust_playground.git ; cd rust_playground
-
-      - save_cache:
-          key: node_modules-{{ checksum "Makefile" }}
-          paths:
-            - ~/workspace/node_modules
-            - ~/.cache/yarn/
 
       - run:
           command: |
@@ -46,10 +42,10 @@ jobs:
       - save_cache:
           key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
           paths: ~/caches/images.tar
-      # - save_cache:
-      #     key: node_modules-{{ .Branch }}-{{ checksum "package.json" }}
-      #     paths:
-      #       - ~/workspace/node_modules
-      #       - ~/.cache/yarn/
+      - save_cache:
+          key: node_modules-{{ checksum "rust_cache" }}
+          paths:
+            - ~/workspace/node_modules
+            - ~/.cache/yarn/
 
       - run: make deploy
