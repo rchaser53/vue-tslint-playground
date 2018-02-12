@@ -9,6 +9,14 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
+Vue.mixin({
+	methods: {
+		globalHoge: function() {
+			console.log(2)
+		}
+	}
+})
+
 const MixinA = {
 	nyan(): void {
 		console.log('nyan')
@@ -28,11 +36,14 @@ export default (({ MixinA, MixinB }) => {
 		}
 	})
 	class Hoge extends Vue {
-		hoge() {
-			MixinA.nyan()
+		hoge(this: Hoge) {
 			// [1,2,3].reduce<string[]>((stack, next) => {
 			//     return stack.concat(next.toString())
 			// }, [])
+			MixinA.nyan()
+
+			this.globalHoge('abc')
+			// this.a
 		}
 	}
 	return Hoge
