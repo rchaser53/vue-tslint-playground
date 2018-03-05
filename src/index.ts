@@ -5,6 +5,5 @@ import App from './App.vue'
 new Vue({
 	el: '#app',
 	router,
-	components: { App },
-	template: '<app />'
+	components: { App }
 })

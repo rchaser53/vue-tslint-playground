@@ -3,8 +3,16 @@ import Router from 'vue-router'
 import AvTsComponent from './components/av-ts-component.vue'
 import ComponentA from './components/componentA.vue'
 import NativeTs from './components/native-ts.vue'
+import Sidebar from './components/sidebar.vue'
 
 Vue.use(Router)
+
+export const createComponents = (component) => {
+	return {
+		content: component,
+		sidebar: Sidebar
+	}
+}
 
 export default new Router({
 	mode: 'history',
@@ -15,16 +23,14 @@ export default new Router({
 			children: [
 				{
 					path: 'ratta',
-					component: AvTsComponent
+					components: createComponents(AvTsComponent)
 				},
 				{
 					path: 'makimaki',
-					component: ComponentA
+					components: createComponents(ComponentA)
 				}
 			],
-			components: {
-				default: NativeTs
-			}
+			components: createComponents(NativeTs)
 		},
 		// this is kinda 404
 		{
