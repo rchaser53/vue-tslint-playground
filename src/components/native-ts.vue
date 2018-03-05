@@ -45,7 +45,7 @@ const Hoge = Vue.extend({
 	computed: {
 		culculatePropertyA: function() {
 			this.globalHoge('a') // why don't you need the parameter. globalHoge is no parameter.
-			return this.propertyA * 2 // the editor emits the error. but it's not typescript error.
+			return (this as any).propertyA * 2 // the editor emits the error. but it's not typescript error.
 		}
 	}
 })
