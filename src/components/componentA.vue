@@ -1,13 +1,13 @@
 <template>
   <div class="column is-12">
-    <label @click="hoge" class="label">afsdaf</label>
+    <label @click="hoge" class="label">testetsteste</label>
   </div>
 </template>
 
 <script lang="ts">
-/* eslint-disable */
 import Vue from 'vue'
-import Component from 'vue-class-component'
+import Component, { mixins } from 'vue-class-component'
+import MixinA from './mixin'
 
 Vue.mixin({
 	methods: {
@@ -17,35 +17,10 @@ Vue.mixin({
 	}
 })
 
-const MixinA = {
-	nyan(): void {
-		console.log('nyan')
+@Component
+export default class extends mixins(MixinA) {
+	hoge() {
+		console.log(this.mixinValue)
 	}
 }
-
-const MixinB = {
-	chu(a: number): string {
-		return a.toString()
-	}
-}
-
-export default (({ MixinA, MixinB }) => {
-	@Component({
-		props: {
-			propMessage: String
-		}
-	})
-	class Hoge extends Vue {
-		hoge(this: Hoge) {
-			// [1,2,3].reduce<string[]>((stack, next) => {
-			//     return stack.concat(next.toString())
-			// }, [])
-			MixinA.nyan()
-
-			this.globalHoge('abc')
-			// this.a
-		}
-	}
-	return Hoge
-})({ MixinA, MixinB })
 </script>

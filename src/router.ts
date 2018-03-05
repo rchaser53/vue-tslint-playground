@@ -30,7 +30,7 @@ export default new Router({
 					components: createComponents(ComponentA)
 				}
 			],
-			components: createComponents(NativeTs)
+			components: createComponents(ComponentA)
 		},
 		// this is kinda 404
 		{
