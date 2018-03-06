@@ -1,9 +1,3 @@
-<template>
-  <div class="column is-12">
-    <label @click="hoge" class="label">testetsteste</label>
-  </div>
-</template>
-
 <script lang="ts">
 import Vue from 'vue'
 import Component, { mixins } from 'vue-class-component'
@@ -21,7 +15,7 @@ Vue.mixin({
 @Component({
 	// extends: Parent
 })
-export default class extends mixins(MixinA) {
+export default class extends mixins(MixinA, Parent) {
 	hoge() {
 		// console.log((this as any).parentValue)
 		// console.log((this as any).msg)
