@@ -37,7 +37,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
             loaders: {
-                ts: 'ts-loader!tslint-loader?{"options":{"configFile":"tslint.json","tsConfigFile":"tsconfig.json","fix":true}}'
+                ts: 'ts-loader!tslint-loader?{"options":{"configFile":"tslint.json","tsConfigFile":"tsconfig.json","fix":true}}',
+                sass: 'style-loader!css-loader!sass-loader'
             }
         }
     }
