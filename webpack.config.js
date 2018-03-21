@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
 	entry: './src/index.ts',
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -20,7 +21,8 @@ module.exports = {
         loader: 'tslint-loader',
         exclude: /(node_modules)/,
         options: {
-            configFile: 'tslint.json'
+            configFile: 'tslint.json',
+            fix: true,
         }
     },
     {
@@ -37,7 +39,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
             loaders: {
-                ts: 'ts-loader!tslint-loader?{"options":{"configFile":"tslint.json","tsConfigFile":"tsconfig.json","fix":true}}',
+                ts: 'ts-loader',
                 sass: 'style-loader!css-loader!sass-loader'
             }
         }
