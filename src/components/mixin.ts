@@ -6,3 +6,5 @@ import Component from 'vue-class-component'
 export default class extends Vue {
 	mixinValue = 'Hello'
 }
+
+const abc = '2'

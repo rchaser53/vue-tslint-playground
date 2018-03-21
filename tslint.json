@@ -2,7 +2,7 @@
 	"rules": {
 		"class-name": true,
 		"comment-format": [true, "check-space"],
-		"indent": [true, "tab"],
+		"indent": [true, "tabs"],
 		"no-duplicate-variable": true,
 		"no-eval": true,
 		"no-internal-module": false,
