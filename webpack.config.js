@@ -22,7 +22,7 @@ module.exports = {
       exclude: /(node_modules)/,
       options: {
         configFile: 'tslint.json',
-        fix: true,
+        // fix: true,
       }
     },
     {
@@ -41,9 +41,9 @@ module.exports = {
           ts: 'ts-loader',
           sass: 'style-loader!css-loader!sass-loader'
         },
-        preLoaders: {
-          ts: 'tslint-loader?{"options":{"configFile":"tslint.json","tsConfigFile":"tsconfig.json","fix":true}}'
-        },
+        // preLoaders: {
+        //   ts: 'tslint-loader?{"options":{"configFile":"tslint.json","tsConfigFile":"tsconfig.json","fix":true}}'
+        // },
       }
     }]
 	},

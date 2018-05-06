@@ -1,7 +1,7 @@
 <template>
-  <div :class="$style.innerHoge">
-    <div :class="$style.hoge">
-      <div :class="$style.innerHoge">ここからSPA</div>
+  <div>
+    <div>
+      <div>ここからSPA</div>
       <ul>
         <li>spa 000</li>
         <li>spa 111</li>
@@ -16,13 +16,3 @@ const abc = '23'
 
 export default {}
 </script>
-
-<style module lang="sass">
-  .hoge {
-    background-color:red;
-
-    .innerHoge {
-      background-color: blue;
-    }
-  }
-</style>

@@ -9,42 +9,46 @@ jobs:
 
       - run:
           command: |
-            git clone https://github.com/rchaser53/rust_playground.git
-            cd rust_playground
-            git rev-parse HEAD > ../rust_cache
-            cd ..
+            node error.js
 
-      - restore_cache:
-          key: node_modules-{{ checksum "rust_cache" }}
-          paths:
-            - ~/workspace/node_modules
-            - ~/.cache/yarn/
-      - restore_cache:
-          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
-          paths: ~/caches/images.tar
+      # - run:
+      #     command: |
+      #       git clone https://github.com/rchaser53/rust_playground.git
+      #       cd rust_playground
+      #       git rev-parse HEAD > ../rust_cache
+      #       cd ..
 
-      - run:
-          command: |
-            set +o pipefail
-            docker load -i ~/caches/images.tar | true
-      - run: docker-compose up -d
-      - run: docker-compose exec web bash -c "npm i yarn -g"
-      - run: docker-compose exec web bash -c "yarn install"
-      - run: docker-compose exec web bash -c "npm run build"
-      - run:
-          command: |
-            if [ ! -f ~/caches/images.tar ]; then
-              mkdir -p ~/caches
-              docker save $(docker images -q) -o ~/caches/images.tar
-            fi
+      # - restore_cache:
+      #     key: node_modules-{{ checksum "rust_cache" }}
+      #     paths:
+      #       - ~/workspace/node_modules
+      #       - ~/.cache/yarn/
+      # - restore_cache:
+      #     key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+      #     paths: ~/caches/images.tar
 
-      - save_cache:
-          key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
-          paths: ~/caches/images.tar
-      - save_cache:
-          key: node_modules-{{ checksum "rust_cache" }}
-          paths:
-            - ~/workspace/node_modules
-            - ~/.cache/yarn/
+      # - run:
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i ~/caches/images.tar | true
+      # - run: docker-compose up -d
+      # - run: docker-compose exec web bash -c "npm i yarn -g"
+      # - run: docker-compose exec web bash -c "yarn install"
+      # - run: docker-compose exec web bash -c "npm run build"
+      # - run:
+      #     command: |
+      #       if [ ! -f ~/caches/images.tar ]; then
+      #         mkdir -p ~/caches
+      #         docker save $(docker images -q) -o ~/caches/images.tar
+      #       fi
 
-      - run: make deploy
+      # - save_cache:
+      #     key: docker-{{ .Branch }}-{{ checksum "docker-compose.yml" }}-{{ checksum "Dockerfile" }}
+      #     paths: ~/caches/images.tar
+      # - save_cache:
+      #     key: node_modules-{{ checksum "rust_cache" }}
+      #     paths:
+      #       - ~/workspace/node_modules
+      #       - ~/.cache/yarn/
+
+      # - run: make deploy
